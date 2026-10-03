@@ -35,9 +35,13 @@ The proposal's smallest runnable check is:
 
 ```bash
 bb scripts/check-review-worker-plan.clj
+bb scripts/check_review_worker_plan_test.clj
 ```
 
-It reads EDN, compares declared immutable pins to `deps.edn`, verifies existing
-integration files/namespace anchors, and ensures the proposal stays disabled.
+It reads EDN, requires the complete immutable Git dependency set from `deps.edn`
+and an independently reviewed v1 source-file inventory, compares complete pin
+fields, verifies namespace anchors, and ensures the proposal stays disabled.
+The CLI regression fixtures prove that omitted/extra dependencies or integration
+files, incomplete pins, duplicates and service activation are rejected.
 It is only a structural/drift check. Canonical Katamorph resource validation,
 Clio replay, Rheos-ready state and hosted MiMo/Kimi execution are still pending.

@@ -8,9 +8,36 @@
   (when-not valid?
     (throw (ex-info message {}))))
 
+(def expected-integration-paths
+  "Reviewed v1 source inventory, independent of the proposal being checked."
+  #{"src/cljs/open_hax/sol/infra/agent/service.cljs"
+    "src/cljs/open_hax/sol/infra/agent/runner.cljs"
+    "src/cljs/open_hax/sol/infra/agent/provider/turn_processor.cljs"
+    "src/cljs/open_hax/sol/infra/agent/turn_session.cljs"
+    "src/cljs/open_hax/sol/infra/agent/run_state.cljs"
+    "src/cljs/open_hax/sol/infra/agent/session_store.cljs"
+    "src/cljs/open_hax/sol/infra/agent/episode_ledger.cljs"
+    "src/cljs/open_hax/sol/infra/agent/episode_turn.cljs"
+    "src/cljs/open_hax/sol/shape/episode_event.cljs"
+    "src/cljs/open_hax/sol/law/contract_kinds.cljs"
+    "src/cljs/open_hax/sol/domain/contracts/loader.cljs"
+    "src/cljs/open_hax/sol/bootstrap.cljs"
+    "src/cljs/open_hax/sol/infra/config.cljs"
+    "src/cljs/open_hax/sol/infra/graceful_shutdown.cljs"
+    "src/cljs/open_hax/sol/infra/routes/app.cljs"
+    "src/cljs/open_hax/sol/infra/agent/runtime.cljs"})
+
+(defn declared-git-pins [deps]
+  (into {}
+        (keep (fn [[lib options]]
+                (when (:git/sha options)
+                  [lib (select-keys options [:git/sha :git/tag :deps/root])])))
+        (:deps deps)))
+
 (defn check-plan! [proposal-path]
   (let [plan (edn/read-string (slurp proposal-path))
         deps (edn/read-string (slurp "deps.edn"))
+        expected-pins (declared-git-pins deps)
         points (:integration/points plan)]
     (require-check! (= :proposed (:proposal/status plan)) "Proposal must remain proposed")
     (require-check! (false? (:activation/enabled? plan)) "Proposal must not activate a service")
@@ -19,11 +46,13 @@
                     "Expected Foresight parent story")
     (require-check! (= :eta-mu (get-in plan [:authority :publication])) "Publisher owner drift")
     (require-check! (false? (get-in plan [:review-policy :auto-merge?])) "Planning auto-merge must stay off")
-    (require-check! (seq (:dependencies plan)) "Pinned dependencies required")
+    (require-check! (= (set (keys expected-pins)) (set (keys (:dependencies plan))))
+                    "Incomplete or extra dependency inventory")
     (doseq [[lib pin] (:dependencies plan)]
-      (require-check! (= pin (select-keys (get-in deps [:deps lib]) (keys pin)))
+      (require-check! (= pin (get expected-pins lib))
                       (str "Dependency pin drift: " lib)))
-    (require-check! (seq points) "Integration points required")
+    (require-check! (= expected-integration-paths (set (map :path points)))
+                    "Incomplete or extra integration inventory")
     (require-check! (= (count points) (count (set (map :path points)))) "Duplicate source paths")
     (doseq [{:keys [path namespace anchor]} points]
       (require-check! (.isFile (io/file path)) (str "Missing integration file: " path))

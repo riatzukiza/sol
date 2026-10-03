@@ -107,6 +107,7 @@ is activated by these files.
 
 ```bash
 bb scripts/check-review-worker-plan.clj  # proposal structure, pins, source links
+bb scripts/check_review_worker_plan_test.clj  # CLI omission/extra-entry regressions
 ```
 
 This check does not validate Rheos, canonical Katamorph resources, actual worker
