@@ -101,12 +101,13 @@ production imports, pass a built bundle installed with `npm ci --omit=dev`:
 `node scripts/check-startup.mjs /absolute/path/to/production/dist/server.js`.
 The `Node 22 runtime` CI job exercises that production-only boundary.
 
-The unchanged event-ledger Git revision is hosted in a private repository.
-Fresh CI needs repository secret `SOL_DEPENDENCY_TOKEN` with read-only access to
-`open-hax/event-ledger`. The parent owns credential provisioning. The workflow
-uses it only for pinned Git resolution through a temporary URL-scoped askpass
-helper; application tests/build/startup receive neither this token nor an App
-signing key. A local Git cache does not qualify fresh hosted dependency access.
+The unchanged Git dependencies are public. CI resolves their pinned HTTPS
+revisions with credential helpers and prompts disabled; no dependency secret
+is required. A local Git cache does not qualify fresh hosted dependency access.
+This runtime prerequisite preserves the declared event-ledger pin. Correcting
+that predecessor dependency to Clio is a separate reviewed change, including
+event-shape, persistence and replay compatibility; this baseline does not
+qualify Clio integration or persistent hosted workers.
 
 PM2 dev stack (shadow watch + nbb launcher that waits for `dist-dev/server.js`):
 

@@ -111,3 +111,24 @@ CodeRabbit's first review found that the zero-warning guard missed singular
 both warning-count spellings and rejects either when nonzero. All 13 Node guard
 tests pass after the correction. This is review settlement, not an approval of
 the resulting new head.
+
+### Public dependency correction and scope boundary
+
+On 2026-10-03 the parent made `open-hax/event-ledger` public; a fresh GitHub
+API read confirmed `private: false`, `visibility: public`. The private-access
+observations above describe the earlier runs and are retained as provenance.
+The workflow now removes the obsolete secret/askpass seam and resolves the
+unchanged pinned HTTPS dependencies with credential helpers and prompts
+disabled. Hosted CI must run the actual test/build/production-startup steps
+before this baseline can merge.
+
+The user separately corrected Sol's record authority to Clio. That is not a
+rename of `open-hax.event-ledger`: Clio `788cdd3434615a7932b924e68520dbf7f88408c2`
+uses content-derived schema references, qualified event-type keywords, UUID
+event IDs, explicit stream sequence numbers and causal edges. Its current
+append API is an OS-locked EDN file operation, rather than the predecessor's
+Mongo handle plus envelope API. The canonical 3-point Node 22 card explicitly
+excludes Git-pin migration. PR #2 therefore retains its original four pins;
+a separately admitted/reviewed Clio prerequisite follows the qualified
+baseline. A passing Node 22 baseline is not evidence that Clio is integrated
+or that hosted review workers are ready.
