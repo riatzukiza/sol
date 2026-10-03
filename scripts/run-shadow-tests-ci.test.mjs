@@ -45,6 +45,10 @@ test('missing summary and nonzero child exit fail', async () => {
   assert.notEqual((await childResult(passing, 7)).code, 0);
 });
 
+test('compiler warnings cannot qualify a passing suite', async () => {
+  assert.notEqual((await childResult(passing + 'Build completed. (1 files, 1 compiled, 1 warnings)')).code, 0);
+});
+
 test('a signalled child fails even after passing counters', async () => {
   const result = await runShadowTests({
     command: process.execPath,

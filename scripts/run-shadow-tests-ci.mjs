@@ -1,60 +1,74 @@
 import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 
-function run() {
-  const cmd = process.platform === 'win32' ? 'shadow-cljs.cmd' : 'shadow-cljs';
-  const args = ['compile', 'test'];
+const shadowCli = fileURLToPath(new URL('../node_modules/shadow-cljs/cli/runner.js', import.meta.url));
 
-  const child = spawn(cmd, args, {
-    stdio: ['ignore', 'pipe', 'pipe'],
-    env: {
-      ...process.env,
-      // Hermetic tests: never let default contract-root resolution reach the
-      // live, operator-owned contracts/ folder. Tests that need contracts must
-      // pass an explicit :contracts-dir pointing at a test/fixtures snapshot.
-      CONTRACTS_DIR: process.env.CONTRACTS_DIR ?? 'test/fixtures/empty-contracts',
-    },
-  });
+function resultOf(output, code, signal, timedOut) {
+  if (timedOut) return { code: 1, reason: 'timeout' };
+  if (signal || code !== 0) return { code: code || 1, reason: 'child-failed' };
+  const counters = [...output.matchAll(/\b(\d+) failures?,\s*(\d+) errors?\./g)];
+  const suites = [...output.matchAll(/\bRan (\d+) tests? containing (\d+) assertions?\.\s+(\d+) failures?,\s*(\d+) errors?\./g)];
+  if (!suites.length || suites.some((m) => Number(m[1]) === 0 || Number(m[2]) === 0)) {
+    return { code: 1, reason: 'missing-or-empty-suite' };
+  }
+  if (counters.some((m) => Number(m[1]) > 0 || Number(m[2]) > 0)) {
+    return { code: 1, reason: 'failing-counters' };
+  }
+  if ([...output.matchAll(/\b(\d+) warnings\b/g)].some((m) => Number(m[1]) > 0)) {
+    return { code: 1, reason: 'compiler-warnings' };
+  }
+  return { code: 0, reason: 'completed-nonempty-suite' };
+}
 
-  let combined = '';
-
-  const onChunk = (chunk, stream) => {
-    const text = chunk.toString();
-    combined += text;
-    stream.write(chunk);
-  };
-
-  child.stdout.on('data', (chunk) => onChunk(chunk, process.stdout));
-  child.stderr.on('data', (chunk) => onChunk(chunk, process.stderr));
-
-  child.on('error', (err) => {
-    console.error('[knoxx] Failed to spawn shadow-cljs:', err);
-    process.exit(1);
-  });
-
-  child.on('close', (code, signal) => {
-    if (signal) {
-      console.error(`[knoxx] shadow-cljs terminated by signal ${signal}`);
-      process.exit(code ?? 1);
-      return;
-    }
-
-    if (code !== 0) {
-      process.exit(code ?? 1);
-      return;
-    }
-
-    const match = combined.match(/\b(\d+) failures?,\s*(\d+) errors?\./);
-    if (match) {
-      const failures = Number(match[1] || 0);
-      const errors = Number(match[2] || 0);
-      process.exit(failures > 0 || errors > 0 ? 1 : 0);
-      return;
-    }
-
-    // If we can't parse counters, err on the side of failing CI.
-    console.error('[knoxx] Could not determine CLJS test result counters from shadow-cljs output.');
-    process.exit(1);
+export function runShadowTests({
+  command = process.execPath,
+  args = [shadowCli, 'compile', 'test'],
+  timeoutMs = 180_000,
+  stdout = (chunk) => process.stdout.write(chunk),
+  stderr = (chunk) => process.stderr.write(chunk),
+} = {}) {
+  return new Promise((resolve) => {
+    const grouped = process.platform !== 'win32';
+    const child = spawn(command, args, {
+      detached: grouped,
+      stdio: ['ignore', 'pipe', 'pipe'],
+      env: {
+        ...process.env,
+        CONTRACTS_DIR: process.env.CONTRACTS_DIR ?? 'test/fixtures/empty-contracts',
+      },
+    });
+    let output = '';
+    let timedOut = false;
+    const timeout = setTimeout(() => {
+      timedOut = true;
+      // Kill the owned compiler process group, including its JVM, on timeout.
+      try {
+        if (grouped && child.pid) process.kill(-child.pid, 'SIGKILL');
+        else child.kill('SIGKILL');
+      } catch (error) {
+        if (error.code !== 'ESRCH') stderr(`[sol-test] ${error.message}\n`);
+      }
+    }, timeoutMs);
+    const consume = (chunk, write) => {
+      output += chunk.toString();
+      write(chunk);
+    };
+    child.stdout.on('data', (chunk) => consume(chunk, stdout));
+    child.stderr.on('data', (chunk) => consume(chunk, stderr));
+    child.on('error', (error) => {
+      clearTimeout(timeout);
+      stderr(`[sol-test] Failed to spawn compiler: ${error.message}\n`);
+      resolve({ code: 1, reason: 'spawn-failed' });
+    });
+    child.on('close', (code, signal) => {
+      clearTimeout(timeout);
+      const result = resultOf(output, code, signal, timedOut);
+      if (result.code !== 0) stderr(`[sol-test] Rejected test execution: ${result.reason}\n`);
+      resolve(result);
+    });
   });
 }
 
-run();
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  process.exitCode = (await runShadowTests()).code;
+}
