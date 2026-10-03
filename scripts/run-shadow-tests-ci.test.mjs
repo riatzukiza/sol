@@ -6,6 +6,7 @@ const passing = 'Ran 2 tests containing 3 assertions.\n0 failures, 0 errors.\n';
 const failing = 'Ran 2 tests containing 3 assertions.\n1 failures, 0 errors.\n';
 const quiet = () => {};
 
+/** Exercise the process boundary using controlled output and a real child exit. */
 function childResult(output, exit = 0) {
   return runShadowTests({
     command: process.execPath,
@@ -46,7 +47,9 @@ test('missing summary and nonzero child exit fail', async () => {
 });
 
 test('compiler warnings cannot qualify a passing suite', async () => {
-  assert.notEqual((await childResult(passing + 'Build completed. (1 files, 1 compiled, 1 warnings)')).code, 0);
+  for (const label of ['warning', 'warnings']) {
+    assert.notEqual((await childResult(passing + `Build completed. (1 files, 1 compiled, 1 ${label})`)).code, 0);
+  }
 });
 
 test('a signalled child fails even after passing counters', async () => {

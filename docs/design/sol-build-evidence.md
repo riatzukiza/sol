@@ -85,3 +85,29 @@ production-dependency health/SIGTERM boundary on GitHub. Local results above are
 not a claim that remote CI or exact-head review has completed; those must be
 confirmed before merge. Detailed local command/exit/log hashes are retained in
 `.ημ/node22-prerequisite/runtime-probes.jsonl` and append-only receipts.
+
+### Fresh hosted dependency-access gap
+
+The first GitHub run on `11f19fa1d4519c770d05f833f7b1a1994fd37992`
+([37113465917](https://github.com/riatzukiza/sol/actions/runs/37113465917))
+passed the frozen npm install, then failed `clojure -Srepro -P` cloning
+`open-hax/event-ledger`. Read-only GitHub metadata confirmed that repository is
+private and the pinned commit exists; the other declared Git repositories are
+public. The fork had no Actions secrets. The operator's pre-existing Git cache
+explains local success and does not qualify clean hosted resolution. The later
+CI test/build/startup steps were skipped, not passed.
+
+CI now requires parent-provisioned `SOL_DEPENDENCY_TOKEN` with read-only access
+to that dependency. It is supplied only to Git resolution, using a temporary
+askpass helper and Git's `credential.useHttpPath`; the helper refuses other
+URLs and is removed on exit. Application checks do not inherit this credential.
+Four public-dummy helper fixtures verify the intended username/password prompts
+and rejection of another repository or a host-only prompt. No real credential
+was read, printed or supplied by the Sol sidecar. No pin/Clio migration occurred.
+Fresh remote qualification remains pending until that credential is supplied.
+
+CodeRabbit's first review found that the zero-warning guard missed singular
+`warning`. A regression reproduced exit 0 for that case; the guard now accepts
+both warning-count spellings and rejects either when nonzero. All 13 Node guard
+tests pass after the correction. This is review settlement, not an approval of
+the resulting new head.

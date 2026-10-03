@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 
 const shadowCli = fileURLToPath(new URL('../node_modules/shadow-cljs/cli/runner.js', import.meta.url));
 
+/** Decide success from completed suite counters and the compiler's termination. */
 function resultOf(output, code, signal, timedOut) {
   if (timedOut) return { code: 1, reason: 'timeout' };
   if (signal || code !== 0) return { code: code || 1, reason: 'child-failed' };
@@ -14,12 +15,13 @@ function resultOf(output, code, signal, timedOut) {
   if (counters.some((m) => Number(m[1]) > 0 || Number(m[2]) > 0)) {
     return { code: 1, reason: 'failing-counters' };
   }
-  if ([...output.matchAll(/\b(\d+) warnings\b/g)].some((m) => Number(m[1]) > 0)) {
+  if ([...output.matchAll(/\b(\d+) warnings?\b/g)].some((m) => Number(m[1]) > 0)) {
     return { code: 1, reason: 'compiler-warnings' };
   }
   return { code: 0, reason: 'completed-nonempty-suite' };
 }
 
+/** Run the local compiler with a bounded lifetime; return its verified verdict. */
 export function runShadowTests({
   command = process.execPath,
   args = [shadowCli, 'compile', 'test'],

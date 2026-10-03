@@ -101,6 +101,13 @@ production imports, pass a built bundle installed with `npm ci --omit=dev`:
 `node scripts/check-startup.mjs /absolute/path/to/production/dist/server.js`.
 The `Node 22 runtime` CI job exercises that production-only boundary.
 
+The unchanged event-ledger Git revision is hosted in a private repository.
+Fresh CI needs repository secret `SOL_DEPENDENCY_TOKEN` with read-only access to
+`open-hax/event-ledger`. The parent owns credential provisioning. The workflow
+uses it only for pinned Git resolution through a temporary URL-scoped askpass
+helper; application tests/build/startup receive neither this token nor an App
+signing key. A local Git cache does not qualify fresh hosted dependency access.
+
 PM2 dev stack (shadow watch + nbb launcher that waits for `dist-dev/server.js`):
 
 ```bash

@@ -35,6 +35,33 @@ jobs:
           test "$(npm --version)" = 10.9.3
           npm ci --no-audit --no-fund
           git diff --exit-code -- package.json package-lock.json deps.edn
+      - name: Resolve unchanged pinned Git dependencies
+        env:
+          SOL_DEPENDENCY_TOKEN: ${{ secrets.SOL_DEPENDENCY_TOKEN }}
+          GIT_TERMINAL_PROMPT: '0'
+          GIT_CONFIG_COUNT: '1'
+          GIT_CONFIG_KEY_0: credential.useHttpPath
+          GIT_CONFIG_VALUE_0: 'true'
+        run: |
+          if [ -z "$SOL_DEPENDENCY_TOKEN" ]; then
+            echo 'SOL_DEPENDENCY_TOKEN with read access to open-hax/event-ledger is required.' >&2
+            exit 1
+          fi
+          umask 077
+          askpass=$(mktemp)
+          trap 'rm -f "$askpass"' EXIT
+          cat > "$askpass" <<'ASKPASS'
+          #!/bin/sh
+          case "$1" in
+            "Username for 'https://github.com/open-hax/event-ledger.git':"*)
+              printf '%s\n' x-access-token ;;
+            "Password for 'https://x-access-token@github.com/open-hax/event-ledger.git':"*)
+              printf '%s\n' "$SOL_DEPENDENCY_TOKEN" ;;
+            *) exit 1 ;;
+          esac
+          ASKPASS
+          chmod 700 "$askpass"
+          export GIT_ASKPASS="$askpass"
           clojure -Srepro -P
       - name: Guard regressions and source lint
         run: |

@@ -28,6 +28,7 @@ child.stderr.on('data', (chunk) => { output += chunk.toString(); });
 child.on('error', (error) => { spawnError = error; });
 child.on('close', (code, signal) => { closed = true; exit = { code, signal }; });
 
+/** Bound readiness and shutdown waits while reporting process creation errors. */
 async function waitUntil(predicate, timeoutMs) {
   const deadline = Date.now() + timeoutMs;
   while (!predicate()) {
