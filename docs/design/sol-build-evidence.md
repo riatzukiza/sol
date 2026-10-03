@@ -45,3 +45,90 @@ The CLI regression fixtures prove that omitted/extra dependencies or integration
 files, incomplete pins, duplicates and service activation are rejected.
 It is only a structural/drift check. Canonical Katamorph resource validation,
 Clio replay, Rheos-ready state and hosted MiMo/Kimi execution are still pending.
+
+## Admitted Node 22 runtime prerequisite (2026-10-03)
+
+Canonical Rheos task `146f1b47-c6a7-5a37-996b-a381dd91f6b6` was admitted ready
+at 3 points by the parent. This repair closes the standalone npm/test/startup
+prerequisite from the planning evidence above; it does not admit hosted workers
+or deployment. The parent retains board transition authority.
+
+The manifest records Node **22.20.0** / npm **10.9.3**, retains the existing npm
+lock format and pnpm script aliases, and pins the local shadow npm wrapper to
+**3.4.11**. The rebuilt lock identifies Sol and contains 165 package entries,
+including MCP SDK **1.32.0** under the existing `^1.29.0` manifest range, with
+registry integrity records and **zero links/external sibling paths**. No Clojure
+Git pin or sibling-source substitute changed. Lock SHA256:
+`92b8240163619d3284e2649e29e01da182defe8da30a43fd03b2ab9540a2291b`.
+
+| Node 22 probe | Actual result |
+| --- | --- |
+| Normal `npm ci --no-audit --no-fund`, repeated | Both exit 0; 165 packages. Manifest/lock remained unchanged by installation. Initial `--package-lock-only` resolution was recorded, then qualification used the frozen graph, including normal lifecycle scripts. |
+| First actual `npm test` after install | Exit 1; 125 tests / 405 assertions, 0 failures / 1 error. The guard exposed the inherited `../../scripts/contract-guard.mjs` test path. Corrected to the standalone repository's `scripts/contract-guard.mjs`; no application test was removed or skipped. |
+| Clean `npm test` after deleting owned compiler output/cache | Exit 0; **125 tests / 467 assertions**, **0 failures / 0 errors**; 191 files, 190 compiled, **0 warnings**. Uses the installed local npm wrapper rather than the global CLI. |
+| Clean `npm run build` | Exit 0; 181 files, 165 compiled, **0 warnings**. |
+| `npm run test:guard` | Passing Node regression tests exercise nonempty success and reject crashes/missing counters, zero tests/assertions, conflicting/failing counters, warnings, nonzero exits/signals, missing executable and timeout. Also runs the existing contract-guard tests. |
+| `npm run lint` | Exit 0; **0 errors / 0 warnings**, contract-guard OK. Inherited layering INFO diagnostics remain visible. |
+| Planning structural checker and CLI tests | Exit 0; 4 unchanged pins / 16 integration files; **8 tests / 15 assertions**, 0 failures / 0 errors. This does not validate a board or a worker resource. |
+| Separate `npm ci --omit=dev` production snapshot | Exit 0; 152 packages, identical lock bytes. |
+| `node scripts/check-startup.mjs <production-snapshot>/dist/server.js` | Exit 0. Actual Node v22.20.0 server bound `http://127.0.0.1:44817`; GET `/health` returned HTTP 200 and `{"status":"ok","service":"open-hax-sol-cljs","at":"2026-10-03T09:29:48.711Z"}`; SIGTERM exited **0**. |
+
+The startup check supplied an explicit environment without provider/App/deploy
+credentials, an empty temporary contract root and isolated workspace/state. It
+made only a localhost health request, terminated the temporary process and
+removed its scratch state. No production process, service, board status or
+review worker was activated.
+
+`.github/workflows/node22-runtime.yml` runs the frozen install, immutable Git
+resolution, guard/source/plan checks, actual CLJS tests, server build and separate
+production-dependency health/SIGTERM boundary on GitHub. Local results above are
+not a claim that remote CI or exact-head review has completed; those must be
+confirmed before merge. Detailed local command/exit/log hashes are retained in
+`.ημ/node22-prerequisite/runtime-probes.jsonl` and append-only receipts.
+
+### Fresh hosted dependency-access gap
+
+The first GitHub run on `11f19fa1d4519c770d05f833f7b1a1994fd37992`
+([37113465917](https://github.com/riatzukiza/sol/actions/runs/37113465917))
+passed the frozen npm install, then failed `clojure -Srepro -P` cloning
+`open-hax/event-ledger`. Read-only GitHub metadata confirmed that repository is
+private and the pinned commit exists; the other declared Git repositories are
+public. The fork had no Actions secrets. The operator's pre-existing Git cache
+explains local success and does not qualify clean hosted resolution. The later
+CI test/build/startup steps were skipped, not passed.
+
+CI now requires parent-provisioned `SOL_DEPENDENCY_TOKEN` with read-only access
+to that dependency. It is supplied only to Git resolution, using a temporary
+askpass helper and Git's `credential.useHttpPath`; the helper refuses other
+URLs and is removed on exit. Application checks do not inherit this credential.
+Four public-dummy helper fixtures verify the intended username/password prompts
+and rejection of another repository or a host-only prompt. No real credential
+was read, printed or supplied by the Sol sidecar. No pin/Clio migration occurred.
+Fresh remote qualification remains pending until that credential is supplied.
+
+CodeRabbit's first review found that the zero-warning guard missed singular
+`warning`. A regression reproduced exit 0 for that case; the guard now accepts
+both warning-count spellings and rejects either when nonzero. All 13 Node guard
+tests pass after the correction. This is review settlement, not an approval of
+the resulting new head.
+
+### Public dependency correction and scope boundary
+
+On 2026-10-03 the parent made `open-hax/event-ledger` public; a fresh GitHub
+API read confirmed `private: false`, `visibility: public`. The private-access
+observations above describe the earlier runs and are retained as provenance.
+The workflow now removes the obsolete secret/askpass seam and resolves the
+unchanged pinned HTTPS dependencies with credential helpers and prompts
+disabled. Hosted CI must run the actual test/build/production-startup steps
+before this baseline can merge.
+
+The user separately corrected Sol's record authority to Clio. That is not a
+rename of `open-hax.event-ledger`: Clio `788cdd3434615a7932b924e68520dbf7f88408c2`
+uses content-derived schema references, qualified event-type keywords, UUID
+event IDs, explicit stream sequence numbers and causal edges. Its current
+append API is an OS-locked EDN file operation, rather than the predecessor's
+Mongo handle plus envelope API. The canonical 3-point Node 22 card explicitly
+excludes Git-pin migration. PR #2 therefore retains its original four pins;
+a separately admitted/reviewed Clio prerequisite follows the qualified
+baseline. A passing Node 22 baseline is not evidence that Clio is integrated
+or that hosted review workers are ready.

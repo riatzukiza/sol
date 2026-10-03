@@ -68,14 +68,20 @@ shadow-cljs :server / :server-dev
 
 ## Development and test commands
 
-From the standalone Sol repository (the package retains pnpm command aliases):
+Use Node **22.20.0** and npm **10.9.3** (recorded in `package.json`'s Volta
+configuration). Install the standalone dependency graph with `npm ci`; the
+committed npm v3 lock is the install authority. Do not install from a sibling
+workspace or generate a second lock. pnpm command aliases remain available
+after that frozen install.
 
 ```bash
 pnpm watch        # shadow-cljs watch server-dev → dist-dev/server.js
 pnpm start:dev    # node dist-dev/server.js
 pnpm build        # shadow-cljs compile server → dist/server.js
 pnpm start        # node dist/server.js
-pnpm test         # shadow-cljs compile test (autoruns target/test/test.cjs)
+pnpm test         # local shadow compiler + completed, nonempty CLJS result guard
+pnpm test:guard   # Node regressions for false-success and contract guards
+pnpm check:startup # temporary localhost health + SIGTERM; no daemon/service
 pnpm lint         # clj-kondo --lint src/cljs test/cljs   (alias: lint:kondo)
 pnpm typecheck    # shadow-cljs compile server
 ```
@@ -84,6 +90,24 @@ After a code change, follow the workspace CLJS construction order in
 [`AGENTS.md`](AGENTS.md): the shadow build can exit zero while the program is
 broken, so inspect compiler/test output and, for runtime changes, also compile
 `server` to catch errors the `test` build does not.
+
+`npm test` invokes the installed local shadow wrapper. Missing modules/counters,
+empty suites, any failing counters, child errors/signals, compiler warnings and
+the three-minute compiler timeout fail the command. `check:startup` uses an
+isolated directory, an empty contract root, an ephemeral localhost port and an
+environment without provider/signing credentials. It requires Sol's `/health`
+identity and exit 0 after SIGTERM, then removes its temporary state. To verify
+production imports, pass a built bundle installed with `npm ci --omit=dev`:
+`node scripts/check-startup.mjs /absolute/path/to/production/dist/server.js`.
+The `Node 22 runtime` CI job exercises that production-only boundary.
+
+The unchanged Git dependencies are public. CI resolves their pinned HTTPS
+revisions with credential helpers and prompts disabled; no dependency secret
+is required. A local Git cache does not qualify fresh hosted dependency access.
+This runtime prerequisite preserves the declared event-ledger pin. Correcting
+that predecessor dependency to Clio is a separate reviewed change, including
+event-shape, persistence and replay compatibility; this baseline does not
+qualify Clio integration or persistent hosted workers.
 
 PM2 dev stack (shadow watch + nbb launcher that waits for `dist-dev/server.js`):
 
@@ -111,8 +135,9 @@ bb scripts/check_review_worker_plan_test.clj  # CLI omission/extra-entry regress
 ```
 
 This check does not validate Rheos, canonical Katamorph resources, actual worker
-execution or a deployment. The build evidence records an npm lockfile mismatch
-and a test autorun failure even though shadow-cljs returned zero.
+execution or a deployment. The build evidence preserves the original npm
+lockfile mismatch and false-green test autorun, followed by the admitted Node
+22 prerequisite's actual results.
 
 ## Route surface
 

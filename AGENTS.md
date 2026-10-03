@@ -109,7 +109,9 @@ A task is not done while any relevant suite is failing.
 
 ```bash
 pnpm lint        # clj-kondo, must be zero warnings
-pnpm test        # shadow-cljs compile test (autoruns target/test/test.cjs)
+pnpm test        # local compiler + completed, nonempty CLJS result guard
+pnpm test:guard  # Node guard regressions, including false-success cases
+pnpm check:startup # isolated localhost health + SIGTERM, never a daemon
 pnpm build       # shadow-cljs compile server — also do this for runtime changes;
                  # the test build can pass while the server build fails
 ```
