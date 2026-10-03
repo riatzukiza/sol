@@ -44,7 +44,8 @@ matched by the `:test` build's `open-hax\.sol\..*-test$` regex.
 ## Build targets
 
 Defined in `shadow-cljs.edn` (nREPL `4501`, dev HTTP `9633`). Source-paths
-include sibling packages `../katamorph/src/cljs` and `../event-ledger/src`. All
+come from `deps.edn` via `:deps true`, including immutable Katamorph,
+event-ledger and eta-mu subdirectory Git dependencies. All
 runtime builds are `:target :esm` with `:js-provider :import`; Node and npm
 modules (`node:*`, `fastify`, `ws`, `typebox`, `@modelcontextprotocol/sdk`)
 stay runtime imports via `:keep-as-import`.
@@ -67,7 +68,7 @@ shadow-cljs :server / :server-dev
 
 ## Development and test commands
 
-From `packages/sol/` (pnpm; this is a workspace member):
+From the standalone Sol repository (the package retains pnpm command aliases):
 
 ```bash
 pnpm watch        # shadow-cljs watch server-dev → dist-dev/server.js
@@ -90,6 +91,28 @@ PM2 dev stack (shadow watch + nbb launcher that waits for `dist-dev/server.js`):
 pm2 start ecosystem.config.cjs   # sol-shadow + sol-backend
 pm2 logs sol
 ```
+
+### Persistent review worker planning
+
+See [the phase-one design](docs/design/persistent-review-workers.md),
+[machine-readable proposal](docs/design/persistent-review-workers.edn) and
+[dependency/build evidence](docs/design/sol-build-evidence.md). The existing
+run/session files are useful projections; they do not establish a durable review
+queue, restart recovery, reliable cancellation or a publication outbox.
+
+The proposal is linked to [Foresight PR #122](https://github.com/open-hax/foresight/pull/122)
+and story `330aa63f-f697-5bd6-9fc0-3f19fbea2be4`. It is deliberately outside
+`contracts/`: Katamorph has not admitted a review-job resource kind. No service
+is activated by these files.
+
+```bash
+bb scripts/check-review-worker-plan.clj  # proposal structure, pins, source links
+bb scripts/check_review_worker_plan_test.clj  # CLI omission/extra-entry regressions
+```
+
+This check does not validate Rheos, canonical Katamorph resources, actual worker
+execution or a deployment. The build evidence records an npm lockfile mismatch
+and a test autorun failure even though shadow-cljs returned zero.
 
 ## Route surface
 
