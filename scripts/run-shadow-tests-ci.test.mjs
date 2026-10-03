@@ -1,0 +1,69 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { runShadowTests } from './run-shadow-tests-ci.mjs';
+
+const passing = 'Ran 2 tests containing 3 assertions.\n0 failures, 0 errors.\n';
+const failing = 'Ran 2 tests containing 3 assertions.\n1 failures, 0 errors.\n';
+const quiet = () => {};
+
+function childResult(output, exit = 0) {
+  return runShadowTests({
+    command: process.execPath,
+    args: ['-e', `process.stdout.write(${JSON.stringify(output)}); process.exitCode = ${exit};`],
+    stdout: quiet,
+    stderr: quiet,
+  });
+}
+
+test('a completed nonempty suite passes', async () => {
+  assert.equal((await childResult(passing)).code, 0);
+});
+
+test('compiler exit zero after an import crash fails', async () => {
+  assert.notEqual((await childResult('Error: Cannot find module sdk\nBuild completed.')).code, 0);
+});
+
+test('zero tests or zero assertions never qualify', async () => {
+  for (const output of [
+    'Ran 0 tests containing 0 assertions.\n0 failures, 0 errors.\n',
+    'Ran 2 tests containing 0 assertions.\n0 failures, 0 errors.\n',
+  ]) assert.notEqual((await childResult(output)).code, 0);
+});
+
+test('a later failing summary cannot be hidden by an earlier pass', async () => {
+  assert.notEqual((await childResult(passing + failing)).code, 0);
+  assert.notEqual((await childResult(failing + passing)).code, 0);
+});
+
+test('errors and unpaired failing counters fail', async () => {
+  assert.notEqual((await childResult('Ran 1 test containing 1 assertion.\n0 failures, 1 error.')).code, 0);
+  assert.notEqual((await childResult(passing + '1 failure, 0 errors.')).code, 0);
+});
+
+test('missing summary and nonzero child exit fail', async () => {
+  assert.notEqual((await childResult('0 failures, 0 errors.')).code, 0);
+  assert.notEqual((await childResult(passing, 7)).code, 0);
+});
+
+test('a signalled child fails even after passing counters', async () => {
+  const result = await runShadowTests({
+    command: process.execPath,
+    args: ['-e', `process.stdout.write(${JSON.stringify(passing)}); process.kill(process.pid, 'SIGTERM');`],
+    stdout: quiet,
+    stderr: quiet,
+  });
+  assert.notEqual(result.code, 0);
+});
+
+test('missing executable and timed out child fail', async () => {
+  assert.notEqual((await runShadowTests({ command: '/sol-test-no-such-executable', args: [], stdout: quiet, stderr: quiet })).code, 0);
+  const result = await runShadowTests({
+    command: process.execPath,
+    args: ['-e', 'setInterval(() => {}, 1000);'],
+    timeoutMs: 100,
+    stdout: quiet,
+    stderr: quiet,
+  });
+  assert.notEqual(result.code, 0);
+  assert.equal(result.reason, 'timeout');
+});
