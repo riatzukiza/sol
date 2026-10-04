@@ -45,7 +45,7 @@ matched by the `:test` build's `open-hax\.sol\..*-test$` regex.
 
 Defined in `shadow-cljs.edn` (nREPL `4501`, dev HTTP `9633`). Source-paths
 come from `deps.edn` via `:deps true`, including immutable Katamorph,
-event-ledger and eta-mu subdirectory Git dependencies. All
+Clio and eta-mu subdirectory Git dependencies. All
 runtime builds are `:target :esm` with `:js-provider :import`; Node and npm
 modules (`node:*`, `fastify`, `ws`, `typebox`, `@modelcontextprotocol/sdk`)
 stay runtime imports via `:keep-as-import`.
@@ -104,10 +104,19 @@ The `Node 22 runtime` CI job exercises that production-only boundary.
 The unchanged Git dependencies are public. CI resolves their pinned HTTPS
 revisions with credential helpers and prompts disabled; no dependency secret
 is required. A local Git cache does not qualify fresh hosted dependency access.
-This runtime prerequisite preserves the declared event-ledger pin. Correcting
-that predecessor dependency to Clio is a separate reviewed change, including
-event-shape, persistence and replay compatibility; this baseline does not
-qualify Clio integration or persistent hosted workers.
+The merged Node22 prerequisite qualified the predecessor dependency at that
+revision. This local follow-up consumes immutable Clio `788cdd3434615a7932b924e68520dbf7f88408c2`
+through its actual schema, event construction, filesystem admission and complete
+replay APIs. See the [bounded cutover contract](docs/design/sol-clio-cutover.md).
+It does not migrate old records or qualify persistent hosted workers.
+
+Canonical filesystem events require explicit `SOL_CLIO_LEDGER_FILE` and
+`SOL_CLIO_SCHEMA_DIR`. Set `SOL_CLIO_INITIALIZE=true` only for first initialization
+of a fresh storage epoch, then remove it before reopening. Initialization refuses
+existing ledger/schema paths. With no configuration, local turn execution still
+validates Clio lifecycle data but persists no canonical history. Unsupported
+Mongo/legacy appender configuration is refused; no transport is converted
+implicitly. Existing session/run EDN projections retain their current paths.
 
 PM2 dev stack (shadow watch + nbb launcher that waits for `dist-dev/server.js`):
 

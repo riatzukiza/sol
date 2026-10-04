@@ -1,15 +1,18 @@
 {:proposal/id :sol/persistent-review-workers
- :proposal/version 1
+ :proposal/version 2
  :proposal/status :proposed
  :activation/enabled? false
- :source/revision "1276955c86ff46936cd1ce7d81fbc790f7068e1e"
+ :source/revision "72fdecca292859d92cba48b686ec6fe9c43a9133"
  :parent/story "330aa63f-f697-5bd6-9fc0-3f19fbea2be4"
  :parent/pr "https://github.com/open-hax/foresight/pull/122"
  :authority {:admission :eta-mu :publication :eta-mu :execution :sol
              :api :knoxx :identity :axxium :records :clio
              :resources :katamorph :deployment :services}
- :compatibility {:current-record-library :open-hax/event-ledger
-                 :clio-migration :requires-reviewed-compatibility-and-pin}
+ :compatibility {:current-record-library :open-hax/clio
+                 :clio-migration :bounded-local-filesystem-slice
+                 :legacy-history :unmodified-not-migrated
+                 :durable-ack :upstream-gap
+                 :worker-host-qualified? false}
  :dependencies
  {open-hax/turn-processor {:git/sha "0ed56aa74a53a1d1e9c2e55ce95451817a7f3a90"
                           :deps/root "packages/turn-processor"}
@@ -17,7 +20,7 @@
                   :deps/root "packages/eta-mu"}
   io.github.open-hax/katamorph {:git/tag "v0.2.0"
                                :git/sha "305a5e49d834aca27566f739e8510f6b409fda78"}
-  io.github.open-hax/event-ledger {:git/sha "ada7374b7f4e1c3b0ab4e6bbe996f10f06e9b93a"}}
+  io.github.open-hax/clio {:git/sha "788cdd3434615a7932b924e68520dbf7f88408c2"}}
  :dispatch
  {:supplier :eta-mu
   :required-fields [:repository/id :pull-request/id :base/sha :head/sha
@@ -109,6 +112,12 @@
   {:path "src/cljs/open_hax/sol/infra/agent/session_store.cljs"
    :namespace "open-hax.sol.infra.agent.session-store" :anchor "ISessionStore"
    :gap :partial-persistence-methods}
+  {:path "src/cljs/open_hax/sol/infra/agent/clio_store.cljs"
+   :namespace "open-hax.sol.infra.agent.clio-store" :anchor "open!"
+   :gap :upstream-durable-ack-and-legacy-bridge}
+  {:path "src/cljs/open_hax/sol/law/lifecycle_catalog.cljc"
+   :namespace "open-hax.sol.law.lifecycle-catalog" :anchor "schema/event-schema"
+   :gap :owner-admitted-review-job-data}
   {:path "src/cljs/open_hax/sol/infra/agent/episode_ledger.cljs"
    :namespace "open-hax.sol.infra.agent.episode-ledger" :anchor "configured-appender"
    :gap :require-durable-appender-and-owner-replay-capability}

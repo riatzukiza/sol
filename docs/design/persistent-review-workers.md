@@ -17,14 +17,16 @@ manifest and requested reviewer. It owns eligibility and publication policy.
 Sol consumes that accepted manifest; it neither interprets webhook events nor
 decides whether the PR may merge. Axxium supplies identity bindings. Knoxx owns
 the authenticated dispatch/status/findings/cancel/retry API and projection.
-Clio/event-ledger owns immutable envelopes, append acceptance and replay;
+Clio owns immutable envelopes, append acceptance and replay;
 Katamorph owns reusable job, finding and completion shapes. Services owns the
 isolated Node 22 service slot, persistent storage, ingress and rollback.
 
 The [EDN proposal](persistent-review-workers.edn) describes required interfaces
 and gaps. It is not a Katamorph schema or another executable workflow engine.
-Sol currently pins the predecessor `open-hax/event-ledger`; moving to extracted
-Clio requires an explicitly reviewed compatibility/pin change, not a rename in
+The bounded [filesystem cutover](sol-clio-cutover.md) pins actual Clio source
+and delegates generic schema/admission/replay upstream. It preserves old history
+without importing it and does not qualify persistent worker hosting. The original
+predecessor-to-Clio change requires actual compatibility evidence, not a rename in
 this proposal.
 
 ## What the source actually provides
@@ -37,7 +39,9 @@ this proposal.
 | `infra/agent/turn_session.cljs`, `open-hax.sol.infra.agent.turn-session` | Existing per-turn `AbortController`, queues and `abort!`. Wire authorized cancellation to this protocol and prove provider/tool settlement; do not create a second loop. Queues/controllers live in an atom and are not recoverable after process death. |
 | `infra/agent/run_state.cljs`, `open-hax.sol.infra.agent.run-state` | Run projections and local event reads. Keep as disposable views. Current append reads and rewrites the whole file, ignores malformed lines on read, and is not an atomic durable journal. `list-active-runs` in the persistence protocol returns `[]`; `run-list-active` is a separate local scan. |
 | `infra/agent/session_store.cljs`, `open-hax.sol.infra.agent.session-store` | Session projections/run IDs. Several persistence methods are no-ops or partial projections, not the full advertised run contract. Do not infer restart/cancel guarantees from the protocol docstring. |
-| `infra/agent/episode_ledger.cljs`, `open-hax.sol.infra.agent.episode-ledger` | Existing `:event-ledger-append!` / `:event-ledger-db` injection. Require a configured, durable canonical appender for review hosting. Current no-appender mode validates an envelope without storing it. Add upstream replay/idempotent append capability before recovery. |
+| `infra/agent/episode_ledger.cljs`, `open-hax.sol.infra.agent.episode-ledger` | Clio construction/admission via explicit `:clio/store` or `:clio/append!`. Exact pending data survives process-local retries; Mongo is refused. No-appender mode validates only. Durable acknowledgement and restart intent retention remain required for hosting. |
+| `infra/agent/clio_store.cljs`, `open-hax.sol.infra.agent.clio-store` | Explicit filesystem epoch, upstream schema snapshots, native append admission and complete replay. No implicit Mongo conversion, fsync acknowledgement, legacy bridge or lease. |
+| `law/lifecycle_catalog.cljc`, `open-hax.sol.law.lifecycle-catalog` | Sol lifecycle data composed with upstream `event-schema`; principal/resource authority remains upstream. Review-job profiles still require admission. |
 | `infra/agent/episode_turn.cljs`, `open-hax.sol.infra.agent.episode-turn` and `shape/episode_event.cljs` | Existing canonical lifecycle and principal/resource correlation. Extend through owner-admitted profiles. Today a terminal append failure is reported separately while a successful local result is returned; review eligibility must remain blocked until canonical completion is accepted. |
 | `law/contract_kinds.cljs` and `domain/contracts/loader.cljs` | Delegates validation to `katamorph.schema`, but unknown kinds fall back to the open agent schema. Admit new kinds upstream explicitly; never install this proposal as a runtime resource through that fallback. |
 | `bootstrap.cljs`, `infra/config.cljs`, `infra/graceful_shutdown.cljs` | Store roots currently follow process cwd. Add proposed `SOL_STATE_DIR` and recovery-before-readiness in a later implementation. Shutdown currently closes HTTP/realtime and exits; add fenced admission stop, attempt drain/cancellation and durable interruption evidence. |
@@ -97,7 +101,7 @@ Run/session JSON or EDN views are rebuildable projections. Artifact bytes are
 written, synced and content-hashed before a terminal record refers to them.
 The canonical appender must provide durable acknowledgement and idempotent
 event IDs; replay queries must expose accepted events. These are upstream
-Clio/event-ledger capabilities to verify, not local envelope semantics to copy.
+Clio capabilities to verify, not local envelope semantics to copy.
 
 Cancellation first records authorized intent. Queued attempts never start;
 running attempts call existing `shape.agent/abort!`, then wait for provider and
@@ -160,6 +164,7 @@ existing composition optional. Sol reports evidence; eta-mu applies the policy.
    Actions waiter and restart the worker. Record exact source/artifact/provider
    evidence; a document or a fake provider fixture is not deployment proof.
 
-Default planning review budget: five rounds, no duplicate pending requests,
-auto-merge off until qualified. All operational board state remains in Rheos;
-this PR does not write cards, transition events, credentials or server settings.
+The canonical `~/.agents/skills/pr-flow/SKILL.md` owns reviewer availability,
+review convergence and merge policy under the user’s current instruction.
+All operational board state remains in Rheos; this proposal does not write
+card state, transition events, credentials or server settings.

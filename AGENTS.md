@@ -55,7 +55,7 @@ dependency DAG.
   `@modelcontextprotocol/sdk`) are runtime imports via
   `:keep-as-import`; do not let them leak above `extern/`.
 - `shadow-cljs.edn` uses `:deps true`. `deps.edn` consumes Katamorph and
-  event-ledger at immutable Git revisions, not sibling source directories.
+  Clio at immutable Git revisions, not sibling source directories.
   Treat those as read-only upstream dependencies; fix their laws in their
   owning repositories before changing Sol's pins.
 - No retrieval/RAG layer lives in Sol; `chat` and `direct` routes run the same
@@ -90,18 +90,22 @@ without changing that card's Rheos state. Planning settlement and an actual
 Rheos-ready admission precede implementation and service activation.
 
 Eta-mu owns review admission, policy and GitHub publication; Sol owns execution;
-Knoxx owns the authenticated API/projection; Clio/event-ledger owns immutable
+Knoxx owns the authenticated API/projection; Clio owns immutable
 records; Katamorph owns reusable resource shapes; Services owns deployment.
 Extend Sol's existing agent service and turn processor. Do not create a second
 agent loop, local board parser, local event-envelope law or publisher identity.
 Candidate tools receive neither App signing nor deployment credentials.
 
-Invite CodeRabbit, Codex, MiMo and Kimi. One trusted exact-head approving review
-or explicit completed passing verdict with verified coverage may satisfy model
-quorum. Required deterministic checks and finding settlement still apply.
-Acknowledgements, stale, skipped, partial or rate-limited reviews do not qualify.
-Use the default five-round planning review budget; do not repeat pending
-requests. Keep auto-merge off while this proposal awaits qualification.
+The bounded [Clio cutover](docs/design/sol-clio-cutover.md) consumes the actual
+upstream envelope/catalog/admission API. Filesystem persistence is explicitly
+opt-in; it does not qualify durable acknowledgement, old-history migration,
+lease/fence behavior or persistent review hosting.
+
+For every pull-request interaction, read
+`~/.agents/skills/pr-flow/SKILL.md`. The canonical skill pack owns invitation,
+review convergence and merge policy; follow the user’s current all-available
+agent instruction. Keep repository instructions as a pointer rather than
+copying that policy here.
 
 ## Verification
 
@@ -112,6 +116,8 @@ pnpm lint        # clj-kondo, must be zero warnings
 pnpm test        # local compiler + completed, nonempty CLJS result guard
 pnpm test:guard  # Node guard regressions, including false-success cases
 pnpm check:startup # isolated localhost health + SIGTERM, never a daemon
+pnpm build:clio-native # test-only ESM transport probe
+pnpm check:clio-native # real append/retry/reopen, no provider inference
 pnpm build       # shadow-cljs compile server — also do this for runtime changes;
                  # the test build can pass while the server build fails
 ```

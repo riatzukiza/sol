@@ -1,5 +1,5 @@
 {:http {:port 9633},
- ;; Classpath (paths + JVM deps) comes from deps.edn. katamorph + event-ledger
+ ;; Classpath (paths + JVM deps) comes from deps.edn. katamorph + Clio
  ;; are git-ref deps there — no "../katamorph/src/cljs" sibling source-paths.
  :deps true,
  :nrepl {:port 4501},
@@ -22,6 +22,8 @@
     :keep-as-import
      #{"node:fs/promises"
        "node:fs"
+       "node:crypto"
+       "fs-ext-extra-prebuilt"
        "node:path"
         "node:url"
         "@modelcontextprotocol/sdk/client/index.js"
@@ -46,6 +48,8 @@
     :keep-as-import
      #{"node:fs/promises"
        "node:fs"
+       "node:crypto"
+       "fs-ext-extra-prebuilt"
        "node:path"
         "node:url"
         "@modelcontextprotocol/sdk/client/index.js"
@@ -76,6 +80,8 @@
     :keep-as-import
      #{"node:fs/promises"
        "node:fs"
+       "node:crypto"
+       "fs-ext-extra-prebuilt"
        "node:path"
         "node:url"
         "@modelcontextprotocol/sdk/client/index.js"
@@ -90,6 +96,15 @@
      :infer-externs false,
      :macros {:open-hax.sol.macros true},
      :warnings {:infer-warning false}}},
+  :clio-native
+  {:target :esm
+   :output-dir "target/clio-native"
+   :modules {:probe {:exports {:probe open-hax.sol.clio-native-probe/probe-edn!}}}
+   :js-options {:js-provider :import
+                :keep-as-import #{"node:fs" "node:crypto" "node:path"
+                                  "node:process" "fs-ext-extra-prebuilt"}}
+   :compiler-options {:output-feature-set :es-next :optimizations :none
+                      :infer-externs false}}
   :test
    {:target :node-test,
     :output-to "target/test/test.cjs",

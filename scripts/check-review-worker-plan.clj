@@ -9,7 +9,7 @@
     (throw (ex-info message {}))))
 
 (def expected-integration-paths
-  "Reviewed v1 source inventory, independent of the proposal being checked."
+  "Current bounded source inventory, independent of the proposal being checked."
   #{"src/cljs/open_hax/sol/infra/agent/service.cljs"
     "src/cljs/open_hax/sol/infra/agent/runner.cljs"
     "src/cljs/open_hax/sol/infra/agent/provider/turn_processor.cljs"
@@ -17,6 +17,8 @@
     "src/cljs/open_hax/sol/infra/agent/run_state.cljs"
     "src/cljs/open_hax/sol/infra/agent/session_store.cljs"
     "src/cljs/open_hax/sol/infra/agent/episode_ledger.cljs"
+    "src/cljs/open_hax/sol/infra/agent/clio_store.cljs"
+    "src/cljs/open_hax/sol/law/lifecycle_catalog.cljc"
     "src/cljs/open_hax/sol/infra/agent/episode_turn.cljs"
     "src/cljs/open_hax/sol/shape/episode_event.cljs"
     "src/cljs/open_hax/sol/law/contract_kinds.cljs"

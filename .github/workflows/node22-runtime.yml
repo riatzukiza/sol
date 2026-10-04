@@ -35,7 +35,7 @@ jobs:
           test "$(npm --version)" = 10.9.3
           npm ci --no-audit --no-fund
           git diff --exit-code -- package.json package-lock.json deps.edn
-      - name: Resolve unchanged public pinned Git dependencies
+      - name: Resolve public pinned Git dependencies
         env:
           GIT_TERMINAL_PROMPT: '0'
           GIT_CONFIG_COUNT: '2'
@@ -56,6 +56,7 @@ jobs:
         run: |
           npm test
           npm run build
+          npm run build:clio-native
       - name: Production dependency startup and SIGTERM
         shell: bash
         run: |
@@ -64,6 +65,9 @@ jobs:
           trap 'rm -rf "$stage"' EXIT
           cp package.json package-lock.json "$stage/"
           cp -R dist "$stage/dist"
+          cp -R target/clio-native "$stage/clio-native"
           npm ci --omit=dev --no-audit --no-fund --prefix "$stage"
           cmp package-lock.json "$stage/package-lock.json"
+          node scripts/check-clio-native.mjs "$stage/clio-native/probe.js"
           node scripts/check-startup.mjs "$stage/dist/server.js"
+          node scripts/check-startup.mjs "$stage/dist/server.js" --clio

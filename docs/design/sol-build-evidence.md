@@ -132,3 +132,34 @@ excludes Git-pin migration. PR #2 therefore retains its original four pins;
 a separately admitted/reviewed Clio prerequisite follows the qualified
 baseline. A passing Node 22 baseline is not evidence that Clio is integrated
 or that hosted review workers are ready.
+
+
+## Local Clio filesystem cutover evidence — 2026-10-04
+
+Base Sol `72fdecca292859d92cba48b686ec6fe9c43a9133`; Clio
+`788cdd3434615a7932b924e68520dbf7f88408c2`. The bounded
+[cutover contract](sol-clio-cutover.md) records supported configuration and gaps.
+Historical qualification above remains evidence of those earlier revisions.
+
+| Local check | Actual result |
+| --- | --- |
+| Retry/Mongo RED | 127 tests / 469 assertions, two expected failures. |
+| Missing-schema reopen RED | 134 / 506, two expected failures; one helper warning subsequently repaired. |
+| Equivalent empty-payload RED | 135 / 508, two expected failures. |
+| Final guarded CLJS suite | 136 tests / 511 assertions, zero failures/errors/warnings. |
+| Lint/contract guard | Zero errors/warnings; inherited informational findings remain visible. |
+| Test-runner/contract-guard regressions | 13 passing tests. |
+| Planning CLI/checker | Four immutable pins, 18 source files; eight tests / 15 assertions pass. |
+| Frozen Node22 npm install | 167 packages; package/dependency manifests unchanged. |
+| Actual portable catalog on JVM | Loads successfully; six upstream-composed catalog leaves. |
+| Server / native ESM builds | 197 / 95 files; zero warnings. |
+| Separate production-only install | 154 packages; authoritative npm lock unchanged. |
+| Production ESM real-file probe | Two events, identical lost-ack retry, sequences1/2, explicit cause and complete reopen/replay. |
+| Production localhost startup | Default and Clio-enabled modes both health200 and clean SIGTERM exit0. |
+| Workflow/diff syntax | actionlint and git diff check pass. |
+
+The final production probes were repeated after the payload/hot-reload fixes.
+No provider inference, credential use, daemon change, deployment, commit, push,
+PR, review request or Rheos state write occurred. Mongo, power-loss-durable ack,
+legacy-history import, worker lease/fence and restart intent remain upstream or
+later hosting gaps. GitHub CI and exact-head review have not been qualified.
