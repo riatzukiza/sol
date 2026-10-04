@@ -23,16 +23,30 @@
                  :delivery/mode "stream" :payload {:status "running"}}}))
 (defn error-kind [f]
   (try (f) nil (catch :default error (:clio/error (ex-data error)))))
+(defn ^:async promise-rejection [f]
+  ;; A container preserves the returned Promise across the async try expression.
+  (let [[result] (try
+                   [(f)]
+                   (catch :default error
+                     (is false (str "Session event API threw before returning a Promise: " (.-message error)))
+                     [(js/Promise.reject error)]))]
+    (is (instance? js/Promise result) "Session event API returns a Promise")
+    (try
+      (await result)
+      (is false "Expected Promise rejection")
+      nil
+      (catch :default error error))))
 
 (deftest ^:async actual-lost-ack-and-reopen-test
   (let [root (scratch)]
     (try
       (let [result (await (probe/probe! root))]
         (is (= {:status :passed :events 2 :identical-retry true
-                :reopen-replay true :stream-sequences [1 2]} result)))
+                :reopen-replay true :stream-sequences [1 2]
+                :session-promises true :session-errors-preserved true} result)))
       (finally (fs/remove-tree! root)))))
 
-(deftest actual-admission-and-session-seam-test
+(deftest ^:async actual-admission-and-session-seam-test
   (let [root (scratch)]
     (try
       (let [canonical-store (store/open! (assoc (options root) :initialize? true))
@@ -47,8 +61,10 @@
         (is (= :clio.ledger/concurrent-stream-write
                (error-kind #(store/append! canonical-store (candidate canonical-store 1 [])))))
         (is (= [first-event] (store/events canonical-store)))
-        (is (thrown-with-msg? cljs.core/ExceptionInfo #"another Sol session"
-              (sessions/append-event! session-store "wrong-session" first-event)))
+        (let [error (await (promise-rejection
+                           #(sessions/append-event! session-store "wrong-session" first-event)))]
+          (is (re-find #"another Sol session" (.-message error)))
+          (is (= {:session-id "wrong-session"} (ex-data error))))
         (is (= [first-event] (store/events canonical-store))))
       (finally (fs/remove-tree! root)))))
 
@@ -64,7 +80,7 @@
         (is (= [] (await (sessions/get-events session-store "other-session")))))
       (finally (fs/remove-tree! root)))))
 
-(deftest explicit-storage-epoch-and-legacy-preservation-test
+(deftest ^:async explicit-storage-epoch-and-legacy-preservation-test
   (let [root (scratch)]
     (try
       (fs/ensure-dir! root)
@@ -85,8 +101,45 @@
           (is (= before (mapv #(fs/read-text (path/join schema-dir %)) (fs/list-files schema-dir))))
           (is (= legacy (fs/read-text old-ledger)))
           (is (= old-schema-bytes (fs/read-text old-schema))))
-        (is (thrown-with-msg? cljs.core/ExceptionInfo #"not configured"
-              (sessions/get-events (sessions/create-edn-session-store root) "test-session"))))
+        (let [error (await (promise-rejection
+                           #(sessions/get-events (sessions/create-edn-session-store root) "test-session")))]
+          (is (re-find #"not configured" (.-message error)))))
+      (finally (fs/remove-tree! root)))))
+
+(deftest ^:async unconfigured-session-append-rejects-test
+  (let [root (scratch)
+        session-store (sessions/create-edn-session-store root)
+        event (candidate nil 1 [])
+        error (await (promise-rejection
+                       #(sessions/append-event! session-store "test-session" event)))]
+    (is (re-find #"not configured" (.-message error)))
+    (is (= {} (ex-data error)))
+    (is (not (fs/exists? root)))))
+
+(deftest ^:async actual-clio-session-errors-reject-and-preserve-history-test
+  (let [root (scratch)]
+    (try
+      (let [canonical-store (store/open! (assoc (options root) :initialize? true))
+            session-store (sessions/create-edn-session-store (path/join root "views") canonical-store)
+            event (candidate canonical-store 1 [])
+            ledger-file (:ledger-file canonical-store)]
+        (is (true? (await (sessions/append-event! session-store "test-session" event))))
+        (let [before (fs/read-text ledger-file)
+              collision (assoc-in event [:event/data :payload :status] "changed")
+              error (await (promise-rejection
+                             #(sessions/append-event! session-store "test-session" collision)))]
+          (is (= :clio.ledger/id-collision (:clio/error (ex-data error))))
+          (is (= before (fs/read-text ledger-file)))
+          (is (= [event] (await (sessions/get-events session-store "test-session")))))
+        (fs/append-text! ledger-file "{:broken\n")
+        (let [before (fs/read-text ledger-file)
+              append-error (await (promise-rejection
+                                    #(sessions/append-event! session-store "test-session" event)))
+              read-error (await (promise-rejection
+                                  #(sessions/get-events session-store "test-session")))]
+          (is (= :clio.ledger/invalid-edn (:clio/error (ex-data append-error))))
+          (is (= :clio.ledger/invalid-edn (:clio/error (ex-data read-error))))
+          (is (= before (fs/read-text ledger-file)))))
       (finally (fs/remove-tree! root)))))
 
 (deftest missing-path-and-malformed-records-are-not-empty-test

@@ -15,10 +15,12 @@
 (defprotocol ISessionStore
   (get-session [store session-id])
   (save-session! [store session-id session])
-  (append-event! [store session-id event])
+  (append-event! [store session-id event]
+    "Resolves true on admission; rejects session mismatch or Clio errors.")
   (record-run! [store session-id run-id status])
   (get-session-runs [store session-id])
-  (get-events [store session-id])
+  (get-events [store session-id]
+    "Resolves canonical session events; rejects Clio read errors.")
   (list-sessions [store]))
 
 (defn- base-dir
@@ -75,11 +77,15 @@
     (js/Promise.resolve session))
 
   (append-event! [_ session-id event]
-    (when-not (= session-id (get-in event [:event/data :session/id]))
-      (throw (ex-info "Clio event belongs to another Sol session"
-                      {:session-id session-id})))
-    (clio-store/append! canonical-store event)
-    (js/Promise.resolve true))
+    (js/Promise.
+     (fn [resolve reject]
+       (try
+         (when-not (= session-id (get-in event [:event/data :session/id]))
+           (throw (ex-info "Clio event belongs to another Sol session"
+                           {:session-id session-id})))
+         (clio-store/append! canonical-store event)
+         (resolve true)
+         (catch :default error (reject error))))))
 
   (record-run! [_ session-id run-id _status]
     (let [store {:base-dir base-dir}
@@ -98,9 +104,12 @@
       (js/Promise.resolve (vec (:runs state)))))
 
   (get-events [_ session-id]
-    (js/Promise.resolve
-     (filterv #(= session-id (get-in % [:event/data :session/id]))
-              (clio-store/events canonical-store))))
+    (js/Promise.
+     (fn [resolve reject]
+       (try
+         (resolve (filterv #(= session-id (get-in % [:event/data :session/id]))
+                           (clio-store/events canonical-store)))
+         (catch :default error (reject error))))))
 
   (list-sessions [_]
     (js/Promise.resolve (all-state-files {:base-dir base-dir})))
