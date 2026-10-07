@@ -1,0 +1,515 @@
+[
+  {
+    "name": "open-hax-sol-open-inventory",
+    "at": "2026-10-07T15:05:15.503635+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "--paginate",
+      "--slurp",
+      "repos/open-hax/sol/issues?state=open&per_page=100"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 0,
+    "stdout": {
+      "path": "intake-open-hax-sol-open-inventory.stdout.b64",
+      "raw_sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05",
+      "raw_bytes": 4,
+      "display_sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05",
+      "display_bytes": 4,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/open-hax-sol-open-inventory.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-open-hax-sol-open-inventory.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/open-hax-sol-open-inventory.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  },
+  {
+    "name": "riatzukiza-sol-open-inventory",
+    "at": "2026-10-07T15:05:16.020552+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "--paginate",
+      "--slurp",
+      "repos/riatzukiza/sol/issues?state=open&per_page=100"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 0,
+    "stdout": {
+      "path": "intake-riatzukiza-sol-open-inventory.stdout.b64",
+      "raw_sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05",
+      "raw_bytes": 4,
+      "display_sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05",
+      "display_bytes": 4,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/riatzukiza-sol-open-inventory.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-riatzukiza-sol-open-inventory.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/riatzukiza-sol-open-inventory.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  },
+  {
+    "name": "sol-queued-turn-issue255",
+    "at": "2026-10-07T15:05:51.943623+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "repos/open-hax/eta-mu/issues/255"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 0,
+    "stdout": {
+      "path": "intake-sol-queued-turn-issue255.stdout.b64",
+      "raw_sha256": "523374a847ccc8d07056ce3e87c891271396d67ffa8b9357642ff8e6bcf7490e",
+      "raw_bytes": 6743,
+      "display_sha256": "a267de67ee12bf755919054eb2f1ce03fa4c24bcfb3468b63cece58da93eca95",
+      "display_bytes": 7738,
+      "redacted": true,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/sol-queued-turn-issue255.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-sol-queued-turn-issue255.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/sol-queued-turn-issue255.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  },
+  {
+    "name": "sol-queued-turn-issue255-comments",
+    "at": "2026-10-07T15:05:52.478069+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "repos/open-hax/eta-mu/issues/255/comments?per_page=100"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 0,
+    "stdout": {
+      "path": "intake-sol-queued-turn-issue255-comments.stdout.b64",
+      "raw_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "raw_bytes": 2,
+      "display_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "display_bytes": 2,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/sol-queued-turn-issue255-comments.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-sol-queued-turn-issue255-comments.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/sol-queued-turn-issue255-comments.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  },
+  {
+    "name": "open-hax-sol-current-default",
+    "at": "2026-10-07T15:05:52.872446+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "repos/open-hax/sol"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 0,
+    "stdout": {
+      "path": "intake-open-hax-sol-current-default.stdout.b64",
+      "raw_sha256": "30bbda067c7582625de5a23ea360f4dad4bd0316206ad25aa8c9bb0aeeaf2793",
+      "raw_bytes": 6622,
+      "display_sha256": "8f898bbd406a0ab6aeeb7043bab92abc1a830867ad058bb3637f08fb94abefdd",
+      "display_bytes": 7291,
+      "redacted": true,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/open-hax-sol-current-default.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-open-hax-sol-current-default.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/open-hax-sol-current-default.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  },
+  {
+    "name": "open-hax-sol-current-main",
+    "at": "2026-10-07T15:05:53.374189+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "repos/open-hax/sol/commits/main"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 0,
+    "stdout": {
+      "path": "intake-open-hax-sol-current-main.stdout.b64",
+      "raw_sha256": "95ace585cd1d6225632d6e475a3cb93edb436bf51263c0c4ae7973fc8d2a8282",
+      "raw_bytes": 894520,
+      "display_sha256": "1973a7f6440e593da273c8b4a14db1138b93b9a23753cfdefb2a942a6401051e",
+      "display_bytes": 887945,
+      "redacted": true,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/open-hax-sol-current-main.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-open-hax-sol-current-main.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/open-hax-sol-current-main.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  },
+  {
+    "name": "riatzukiza-sol-current-default",
+    "at": "2026-10-07T15:05:54.396586+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "repos/riatzukiza/sol"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 0,
+    "stdout": {
+      "path": "intake-riatzukiza-sol-current-default.stdout.b64",
+      "raw_sha256": "4ae770a5e5033082148766875e0cac681619dae622a1f5278b2ac87f9186050b",
+      "raw_bytes": 15458,
+      "display_sha256": "589e70fb598d9efac9096712c318a7ebb14d0944da39b8b5750be66530114803",
+      "display_bytes": 17236,
+      "redacted": true,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/riatzukiza-sol-current-default.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-riatzukiza-sol-current-default.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/riatzukiza-sol-current-default.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  },
+  {
+    "name": "riatzukiza-sol-current-main",
+    "at": "2026-10-07T15:05:54.865283+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "repos/riatzukiza/sol/commits/main"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 0,
+    "stdout": {
+      "path": "intake-riatzukiza-sol-current-main.stdout.b64",
+      "raw_sha256": "0d2fb4bae9dee8fca8d3d50ffcbbf70a6bb4cd5bd66f634ecc65ad6439fdf046",
+      "raw_bytes": 195417,
+      "display_sha256": "c7d21b7028f366d1d4d180c480b5dedaf6e69898d1651e75c359d69bb1d57549",
+      "display_bytes": 194878,
+      "redacted": true,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/riatzukiza-sol-current-main.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-riatzukiza-sol-current-main.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/riatzukiza-sol-current-main.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  },
+  {
+    "name": "new-complete-sol-origin-clone",
+    "at": "2026-10-07T15:06:39.787375+00:00",
+    "argv": [
+      "git",
+      "clone",
+      "--bare",
+      "--no-local",
+      "--no-hardlinks",
+      "git@github.com:open-hax/sol.git",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/sol/source.git"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 0,
+    "stdout": {
+      "path": "intake-new-complete-sol-origin-clone.stdout.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/new-complete-sol-origin-clone.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-new-complete-sol-origin-clone.stderr.b64",
+      "raw_sha256": "4645caa58071affb5ff9ea7332f514db7bfb9b4e9ff1e7378f5f9135b70d87ba",
+      "raw_bytes": 134,
+      "display_sha256": "4645caa58071affb5ff9ea7332f514db7bfb9b4e9ff1e7378f5f9135b70d87ba",
+      "display_bytes": 134,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/new-complete-sol-origin-clone.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  },
+  {
+    "name": "sol-personal-observation-fetch",
+    "at": "2026-10-07T15:06:40.636345+00:00",
+    "argv": [
+      "git",
+      "--git-dir",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/sol/source.git",
+      "fetch",
+      "git@github.com:riatzukiza/sol.git",
+      "main:refs/audit/personal-main"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 0,
+    "stdout": {
+      "path": "intake-sol-personal-observation-fetch.stdout.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/sol-personal-observation-fetch.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-sol-personal-observation-fetch.stderr.b64",
+      "raw_sha256": "6e5eb66e4236b45302ad77440bd4be6e04d4317de9c1dbe237ec66ba05d9bb96",
+      "raw_bytes": 91,
+      "display_sha256": "6e5eb66e4236b45302ad77440bd4be6e04d4317de9c1dbe237ec66ba05d9bb96",
+      "display_bytes": 91,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/sol-personal-observation-fetch.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  },
+  {
+    "name": "canonical-sol-merged3",
+    "at": "2026-10-07T15:08:32.730325+00:00",
+    "argv": [
+      "/usr/bin/timeout",
+      "50",
+      "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/runtime/nbb/cli.js",
+      "-cp",
+      "/home/err/.agents/skills/pr-flow/scripts",
+      "/home/err/.agents/skills/pr-flow/scripts/pr.cljs",
+      "status",
+      "riatzukiza/sol",
+      "3"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 1,
+    "stdout": {
+      "path": "intake-canonical-sol-merged3.stdout.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/canonical-sol-merged3.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-canonical-sol-merged3.stderr.b64",
+      "raw_sha256": "53e55a98b053de626d94921dd391df9f6e0c83955d13151a9d1862293e2d44e5",
+      "raw_bytes": 118,
+      "display_sha256": "53e55a98b053de626d94921dd391df9f6e0c83955d13151a9d1862293e2d44e5",
+      "display_bytes": 118,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/canonical-sol-merged3.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  },
+  {
+    "name": "sol-merged3-full-body-after-canonical-refusal",
+    "at": "2026-10-07T15:10:19.345334+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "repos/riatzukiza/sol/pulls/3"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 0,
+    "stdout": {
+      "path": "intake-sol-merged3-full-body-after-canonical-refusal.stdout.b64",
+      "raw_sha256": "74247578a037682d7b017351eb87187ec9d411b5941ed29cbf1ed38a9ae32016",
+      "raw_bytes": 18748,
+      "display_sha256": "e838c63d997ec0110699b7c67a42df3398282ef8867c10e0b95df5223ce42452",
+      "display_bytes": 21207,
+      "redacted": true,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/sol-merged3-full-body-after-canonical-refusal.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-sol-merged3-full-body-after-canonical-refusal.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/sol-merged3-full-body-after-canonical-refusal.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  },
+  {
+    "name": "eta-current-main-exact",
+    "at": "2026-10-07T15:10:20.077629+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "repos/open-hax/eta-mu/commits/main"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 0,
+    "stdout": {
+      "path": "intake-eta-current-main-exact.stdout.b64",
+      "raw_sha256": "9a0f0818ea7eb1a772ac09be87abef3fa3a30a85f9d03a014a5782109b0ece20",
+      "raw_bytes": 92493,
+      "display_sha256": "512f7db7b5fecfcb868a09c017e60a82f2ac449fa06f703c46192aca7a64e337",
+      "display_bytes": 92751,
+      "redacted": true,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/eta-current-main-exact.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-eta-current-main-exact.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/eta-current-main-exact.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  },
+  {
+    "name": "original-sol255-current-card-source",
+    "at": "2026-10-07T15:10:20.585740+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "repos/open-hax/eta-mu/contents/kanban/tasks/sol-turn-session-late-control-messages.md?ref=09a4454480baa67f6fdc40f6f73f5e48ef0457d1"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 0,
+    "stdout": {
+      "path": "intake-original-sol255-current-card-source.stdout.b64",
+      "raw_sha256": "2256778fea43be140ebb80993635edd6d4c8563120b26d170160ec9eadb3cedf",
+      "raw_bytes": 4309,
+      "display_sha256": "35db8ff6e8f4da766934ae8091fc155bd07d7af2ef7e906a2dd65c0ed236b852",
+      "display_bytes": 4114,
+      "redacted": true,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/original-sol255-current-card-source.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-original-sol255-current-card-source.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/original-sol255-current-card-source.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  },
+  {
+    "name": "current-sol-review-callee-source",
+    "at": "2026-10-07T15:10:20.983711+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "repos/open-hax/eta-mu/contents/.github/workflows/opencode-code-review.yml?ref=694a2602709d130b2a60045a25537f1b4476ec1f"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b",
+    "exit": 0,
+    "stdout": {
+      "path": "intake-current-sol-review-callee-source.stdout.b64",
+      "raw_sha256": "7a28e24d8772f815dd2a6b4d36b2538bc856bbab4099052a4876e5c201f715ea",
+      "raw_bytes": 108915,
+      "display_sha256": "07bfc1b7c5b59bf7760e89f9664f1ee280d7453b31b30e3d19ca38f7baaa01fe",
+      "display_bytes": 108744,
+      "redacted": true,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/current-sol-review-callee-source.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "intake-current-sol-review-callee-source.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/private/current-sol-review-callee-source.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "original_capture_family": "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/pre-captures",
+    "transport_copied_exact": true
+  }
+]
