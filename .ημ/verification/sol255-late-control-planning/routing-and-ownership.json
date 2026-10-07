@@ -1,0 +1,24 @@
+{
+  "origin": "1276955c86ff46936cd1ce7d81fbc790f7068e1e",
+  "personal": "bf6c77b92246464b1e34177bc851d1ffc008c1b7",
+  "fork": "riatzukiza/sol",
+  "parent": "open-hax/sol",
+  "accepted_is_ancestor": true,
+  "current_open_origin_personal_scope_empty": true,
+  "closed3_scope": "opt-in Clio lifecycle transport; target source/tests identical across fork delta",
+  "canonical_merged3_exit": 1,
+  "canonical_failure": "HTTP500 reading commit status; no native qualification inferred",
+  "original_issue": "https://github.com/open-hax/eta-mu/issues/255",
+  "original_artifact_ref": "09a4454480baa67f6fdc40f6f73f5e48ef0457d1",
+  "original_identity": "sol-turn-session-late-control-messages",
+  "source_artifact_status": "incoming",
+  "operational_state_verified": false,
+  "new_authored_uuid": "29ea92e6-0804-5097-badd-8985483e958e",
+  "new_initial_status": "incoming",
+  "configured_sol_boards_found": [],
+  "workflows": [
+    ".github/workflows/eta-mu-evidence-review.yml",
+    ".github/workflows/node22-runtime.yml"
+  ],
+  "prospective_publication": "DRAFT only; static source refusal for all three pinned review jobs; read-only runtime job may execute; no ready/hosting/deployment qualification"
+}
