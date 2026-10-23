@@ -1,0 +1,574 @@
+[
+  {
+    "name": "new-independent-sol-plan-store",
+    "at": "2026-10-07T15:13:23.480217+00:00",
+    "argv": [
+      "git",
+      "clone",
+      "--bare",
+      "--no-local",
+      "--no-hardlinks",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/sol/source.git",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/source.git"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh",
+    "exit": 0,
+    "stdout": {
+      "path": "new-independent-sol-plan-store.stdout.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/new-independent-sol-plan-store.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "new-independent-sol-plan-store.stderr.b64",
+      "raw_sha256": "9149aa3d2a1c3ba243605a6932b4ea32e4fee5125f5e8643ba285b37db86c7de",
+      "raw_bytes": 133,
+      "display_sha256": "9149aa3d2a1c3ba243605a6932b4ea32e4fee5125f5e8643ba285b37db86c7de",
+      "display_bytes": 133,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/new-independent-sol-plan-store.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "exact-personal-plan-branch",
+    "at": "2026-10-07T15:13:23.534186+00:00",
+    "argv": [
+      "git",
+      "--git-dir",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/source.git",
+      "fetch",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/remaining-child-discovery-d8h58u3b/sol/source.git",
+      "refs/audit/personal-main:refs/heads/codex/sol-late-control-planning"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh",
+    "exit": 0,
+    "stdout": {
+      "path": "exact-personal-plan-branch.stdout.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/exact-personal-plan-branch.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "exact-personal-plan-branch.stderr.b64",
+      "raw_sha256": "ef090cd8ccd5224a0d437628ef34585ff1359d64d40ea653a3fc2f619b61502f",
+      "raw_bytes": 182,
+      "display_sha256": "ef090cd8ccd5224a0d437628ef34585ff1359d64d40ea653a3fc2f619b61502f",
+      "display_bytes": 182,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/exact-personal-plan-branch.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "new-sol-plan-worktree",
+    "at": "2026-10-07T15:13:23.597915+00:00",
+    "argv": [
+      "git",
+      "--git-dir",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/source.git",
+      "worktree",
+      "add",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree",
+      "codex/sol-late-control-planning"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh",
+    "exit": 0,
+    "stdout": {
+      "path": "new-sol-plan-worktree.stdout.b64",
+      "raw_sha256": "fcc2f0fb569d49f0542bb1781ebe3de527a7792c862685e02181d897e7ce374c",
+      "raw_bytes": 84,
+      "display_sha256": "fcc2f0fb569d49f0542bb1781ebe3de527a7792c862685e02181d897e7ce374c",
+      "display_bytes": 84,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/new-sol-plan-worktree.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "new-sol-plan-worktree.stderr.b64",
+      "raw_sha256": "0c73c13bb59c82154841180260d78e59b80864a62decd42912a69183820707a2",
+      "raw_bytes": 68,
+      "display_sha256": "0c73c13bb59c82154841180260d78e59b80864a62decd42912a69183820707a2",
+      "display_bytes": 68,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/new-sol-plan-worktree.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "pinned-turn-processor-loop-source",
+    "at": "2026-10-07T15:16:50.233358+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "repos/open-hax/eta-mu/contents/packages/turn-processor/src/cljs/eta_mu/turn_processor/infra/loop.cljs?ref=0ed56aa74a53a1d1e9c2e55ce95451817a7f3a90"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh",
+    "exit": 0,
+    "stdout": {
+      "path": "pinned-turn-processor-loop-source.stdout.b64",
+      "raw_sha256": "432932f81282c9d16f1a8b3930eb755e47f410dd7d9f969eee8fda1fff12bfbe",
+      "raw_bytes": 21614,
+      "display_sha256": "f577722dec34b6614df9fbba0d5a22d88489e00909ab305a57fbc91c91f662f2",
+      "display_bytes": 21387,
+      "redacted": true,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/pinned-turn-processor-loop-source.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "pinned-turn-processor-loop-source.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/pinned-turn-processor-loop-source.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "fresh-personal-sol-routing",
+    "at": "2026-10-07T15:16:50.639563+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "repos/riatzukiza/sol"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh",
+    "exit": 0,
+    "stdout": {
+      "path": "fresh-personal-sol-routing.stdout.b64",
+      "raw_sha256": "4ae770a5e5033082148766875e0cac681619dae622a1f5278b2ac87f9186050b",
+      "raw_bytes": 15458,
+      "display_sha256": "589e70fb598d9efac9096712c318a7ebb14d0944da39b8b5750be66530114803",
+      "display_bytes": 17236,
+      "redacted": true,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/fresh-personal-sol-routing.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "fresh-personal-sol-routing.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/fresh-personal-sol-routing.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "fresh-open-hax-sol-main",
+    "at": "2026-10-07T15:16:51.090007+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "repos/open-hax/sol/commits/main"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh",
+    "exit": 0,
+    "stdout": {
+      "path": "fresh-open-hax-sol-main.stdout.b64",
+      "raw_sha256": "95ace585cd1d6225632d6e475a3cb93edb436bf51263c0c4ae7973fc8d2a8282",
+      "raw_bytes": 894520,
+      "display_sha256": "1973a7f6440e593da273c8b4a14db1138b93b9a23753cfdefb2a942a6401051e",
+      "display_bytes": 887945,
+      "redacted": true,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/fresh-open-hax-sol-main.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "fresh-open-hax-sol-main.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/fresh-open-hax-sol-main.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "fresh-open-hax-sol-open-scope",
+    "at": "2026-10-07T15:16:52.022890+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "--paginate",
+      "--slurp",
+      "repos/open-hax/sol/issues?state=open&per_page=100"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh",
+    "exit": 0,
+    "stdout": {
+      "path": "fresh-open-hax-sol-open-scope.stdout.b64",
+      "raw_sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05",
+      "raw_bytes": 4,
+      "display_sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05",
+      "display_bytes": 4,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/fresh-open-hax-sol-open-scope.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "fresh-open-hax-sol-open-scope.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/fresh-open-hax-sol-open-scope.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "fresh-riatzukiza-sol-main",
+    "at": "2026-10-07T15:16:52.560963+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "repos/riatzukiza/sol/commits/main"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh",
+    "exit": 0,
+    "stdout": {
+      "path": "fresh-riatzukiza-sol-main.stdout.b64",
+      "raw_sha256": "0d2fb4bae9dee8fca8d3d50ffcbbf70a6bb4cd5bd66f634ecc65ad6439fdf046",
+      "raw_bytes": 195417,
+      "display_sha256": "c7d21b7028f366d1d4d180c480b5dedaf6e69898d1651e75c359d69bb1d57549",
+      "display_bytes": 194878,
+      "redacted": true,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/fresh-riatzukiza-sol-main.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "fresh-riatzukiza-sol-main.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/fresh-riatzukiza-sol-main.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "fresh-riatzukiza-sol-open-scope",
+    "at": "2026-10-07T15:16:53.241584+00:00",
+    "argv": [
+      "gh",
+      "api",
+      "--paginate",
+      "--slurp",
+      "repos/riatzukiza/sol/issues?state=open&per_page=100"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh",
+    "exit": 0,
+    "stdout": {
+      "path": "fresh-riatzukiza-sol-open-scope.stdout.b64",
+      "raw_sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05",
+      "raw_bytes": 4,
+      "display_sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05",
+      "display_bytes": 4,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/fresh-riatzukiza-sol-open-scope.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "fresh-riatzukiza-sol-open-scope.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/fresh-riatzukiza-sol-open-scope.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "accepted-personal-ancestry",
+    "at": "2026-10-07T15:20:56.351867+00:00",
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "1276955c86ff46936cd1ce7d81fbc790f7068e1e",
+      "bf6c77b92246464b1e34177bc851d1ffc008c1b7"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree",
+    "exit": 0,
+    "stdout": {
+      "path": "accepted-personal-ancestry.stdout.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/accepted-personal-ancestry.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "accepted-personal-ancestry.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/accepted-personal-ancestry.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "own-current-api-receipt-append",
+    "at": "2026-10-07T15:20:56.565123+00:00",
+    "argv": [
+      "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/runtime/nbb/cli.js",
+      "-cp",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/receipt-owner/src/cljs:/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/receipt-owner/src/cljc",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/receipt.cljs",
+      "append",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/outside/receipt-fields.json",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree/.\u03b7\u03bc/receipts.edn"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree",
+    "exit": 0,
+    "stdout": {
+      "path": "own-current-api-receipt-append.stdout.b64",
+      "raw_sha256": "ee0bab0760dfec748daec13836e9874f01fc5ea311d478de3027292c90299cfd",
+      "raw_bytes": 115,
+      "display_sha256": "ee0bab0760dfec748daec13836e9874f01fc5ea311d478de3027292c90299cfd",
+      "display_bytes": 115,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/own-current-api-receipt-append.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "own-current-api-receipt-append.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/own-current-api-receipt-append.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "canonical-portable-plan-reflection",
+    "at": "2026-10-07T15:20:56.835605+00:00",
+    "argv": [
+      "bwrap",
+      "--ro-bind",
+      "/",
+      "/",
+      "--bind",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree",
+      "--bind",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/cache",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/cache",
+      "--bind",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/tmp",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/tmp",
+      "--unshare-net",
+      "--die-with-parent",
+      "--chdir",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree",
+      "/usr/local/bin/bb",
+      "/home/err/.agents/skills/session-mycology/scripts/sm-log.bb",
+      "--task",
+      "Plan complete Sol late-control admission from existing Eta255",
+      "--efficiency",
+      "0.80",
+      "--friction",
+      "0.25",
+      "--candidate",
+      "0",
+      "--receipt-refs",
+      "sol255-late-control-planning",
+      "--note",
+      "Preserve original task identity outside new Sol planning artifact; queue drain is not delivery, including abort-after-awaited-drain. Full race/ack policy and all gates need reviewed native Ready. No runtime/provider/source implementation or operational state change."
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree",
+    "exit": 0,
+    "stdout": {
+      "path": "canonical-portable-plan-reflection.stdout.b64",
+      "raw_sha256": "dc21d40f4ac703e3412812089266db61cf7bd2cb8305fd5f81ff76306e6084a8",
+      "raw_bytes": 142,
+      "display_sha256": "dc21d40f4ac703e3412812089266db61cf7bd2cb8305fd5f81ff76306e6084a8",
+      "display_bytes": 142,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/canonical-portable-plan-reflection.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "canonical-portable-plan-reflection.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/canonical-portable-plan-reflection.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "canonical-portable-plan-reflection-reader",
+    "at": "2026-10-07T15:20:56.875584+00:00",
+    "argv": [
+      "bwrap",
+      "--ro-bind",
+      "/",
+      "/",
+      "--bind",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree",
+      "--bind",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/cache",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/cache",
+      "--bind",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/tmp",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/tmp",
+      "--unshare-net",
+      "--die-with-parent",
+      "--chdir",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree",
+      "/usr/local/bin/bb",
+      "/home/err/.agents/skills/session-mycology/scripts/sm-list.bb",
+      "--ledger-only",
+      "--limit",
+      "1"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree",
+    "exit": 0,
+    "stdout": {
+      "path": "canonical-portable-plan-reflection-reader.stdout.b64",
+      "raw_sha256": "6ac15a910ca0148fe33e6bae98e4466a897e715086b72ad00dc3e725104dd6c0",
+      "raw_bytes": 638,
+      "display_sha256": "6ac15a910ca0148fe33e6bae98e4466a897e715086b72ad00dc3e725104dd6c0",
+      "display_bytes": 638,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/canonical-portable-plan-reflection-reader.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "canonical-portable-plan-reflection-reader.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/canonical-portable-plan-reflection-reader.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "new-authored-markdown-format",
+    "at": "2026-10-07T15:20:56.933285+00:00",
+    "argv": [
+      "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/runtime/prettier/bin/prettier.cjs",
+      "--write",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree/docs/agile/tasks/sol-late-control-admission.md",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree/docs/design/late-control-admission-planning.md",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree/.\u03b7\u03bc/verification/sol255-late-control-planning/README.md"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree",
+    "exit": 0,
+    "stdout": {
+      "path": "new-authored-markdown-format.stdout.b64",
+      "raw_sha256": "61dd07d8474bce4202b57a0963173020f2dadadddab8baf456b8c304452bfd90",
+      "raw_bytes": 116,
+      "display_sha256": "61dd07d8474bce4202b57a0963173020f2dadadddab8baf456b8c304452bfd90",
+      "display_bytes": 116,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/new-authored-markdown-format.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "new-authored-markdown-format.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/new-authored-markdown-format.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "new-authored-markdown-check",
+    "at": "2026-10-07T15:20:57.345035+00:00",
+    "argv": [
+      "/home/err/.volta/tools/image/node/22.20.0/bin/node",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/runtime/prettier/bin/prettier.cjs",
+      "--check",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree/docs/agile/tasks/sol-late-control-admission.md",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree/docs/design/late-control-admission-planning.md",
+      "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree/.\u03b7\u03bc/verification/sol255-late-control-planning/README.md"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree",
+    "exit": 0,
+    "stdout": {
+      "path": "new-authored-markdown-check.stdout.b64",
+      "raw_sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+      "raw_bytes": 66,
+      "display_sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+      "display_bytes": 66,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/new-authored-markdown-check.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "new-authored-markdown-check.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/new-authored-markdown-check.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  },
+  {
+    "name": "candidate-staged-hygiene",
+    "at": "2026-10-07T15:20:57.783375+00:00",
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "cwd": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/worktree",
+    "exit": 0,
+    "stdout": {
+      "path": "candidate-staged-hygiene.stdout.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/candidate-staged-hygiene.stdout",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    },
+    "stderr": {
+      "path": "candidate-staged-hygiene.stderr.b64",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "display_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "display_bytes": 0,
+      "redacted": false,
+      "raw_private": "/home/err/.codex/parallel-goal/child-prs-20261006/sol255-late-control-planning-dbjj5ajh/private/candidate-staged-hygiene.stderr",
+      "grammar": "unwrapped standard base64 followed by exactly one LF"
+    }
+  }
+]
