@@ -112,16 +112,19 @@ copying that policy here.
 A task is not done while any relevant suite is failing.
 
 ```bash
-pnpm lint        # clj-kondo, must be zero warnings
-pnpm test        # local compiler + completed, nonempty CLJS result guard
-pnpm test:guard  # Node guard regressions, including false-success cases
-pnpm check:startup # isolated localhost health + SIGTERM, never a daemon
-pnpm build:clio-native # test-only ESM transport probe
-pnpm check:clio-native # real append/retry/reopen, no provider inference
-pnpm build       # shadow-cljs compile server — also do this for runtime changes;
-                 # the test build can pass while the server build fails
+npm run lint        # clj-kondo, must be zero warnings
+npm test            # local compiler + completed, nonempty CLJS result guard
+npm run test:guard  # Node guard regressions, including false-success cases
+npm run build       # shadow-cljs compile server → dist/server.js; also do this
+                    # for runtime changes, since the test build can pass while
+                    # the server build fails
+npm run check:startup # needs dist/server.js from the build above; isolated
+                      # localhost health + SIGTERM, never a daemon
+npm run build:clio-native # test-only ESM transport probe
+npm run check:clio-native # real append/retry/reopen, no provider inference
 ```
 
+`npm ci` does not install pnpm, so run the declared scripts with `npm run`.
 Inspect compiler and test output for failures even when the command exits zero —
 a green exit code does not mean a green build.
 </content>
