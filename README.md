@@ -74,6 +74,16 @@ committed npm v3 lock is the install authority. Do not install from a sibling
 workspace or generate a second lock. `npm ci` does not install pnpm, so run
 the declared scripts with `npm run` (or `npm test`).
 
+The build, test, lint and planning commands also need tools that `npm ci`
+does not install. CI (`.github/workflows/node22-runtime.yml`) uses:
+
+- a JVM: Temurin Java **21** (`shadow-cljs.edn` sets `:deps true`, so
+  shadow-cljs resolves dependencies through the Clojure CLI);
+- the Clojure CLI **1.12.2.1565** (`clojure`, for `deps.edn`);
+- clj-kondo **2025.07.28** (`npm run lint`);
+- Babashka **1.12.207** (`bb scripts/check-review-worker-plan.clj` and
+  `bb scripts/check_review_worker_plan_test.clj`).
+
 ```bash
 npm run watch     # shadow-cljs watch server-dev → dist-dev/server.js
 npm run start:dev # node dist-dev/server.js
